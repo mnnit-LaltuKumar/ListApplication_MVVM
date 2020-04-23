@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="@dimen/dimen_21"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/iv_divider"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_1"
+        android:src="@color/shimmer_bg"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profile_image"
+        android:layout_width="@dimen/dimen_32"
+        android:layout_height="@dimen/dimen_32"
+        android:src="@color/shimmer_bg"
+        android:layout_marginStart="@dimen/dimen_16"
+        app:civ_border_width="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_author"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_title"/>
+
+    <TextView
+        android:id="@+id/tv_author"
+        style="@style/text_author_shimmer_style"
+        android:layout_width="@dimen/dimen_100"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_16"
+        android:layout_marginTop="@dimen/dimen_21"
+        android:background="@drawable/shimmer_text_bg"
+        app:layout_constraintStart_toEndOf="@+id/profile_image"
+        app:layout_constraintTop_toTopOf="@+id/iv_divider"/>
+
+    <TextView
+        android:id="@+id/tv_title"
+        style="@style/text_author_shimmer_style"
+        android:layout_width="@dimen/dimen_260"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shimmer_text_bg"
+        android:layout_marginTop="@dimen/dimen_16"
+        app:layout_constraintStart_toStartOf="@+id/tv_author"
+        app:layout_constraintTop_toBottomOf="@+id/tv_author"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

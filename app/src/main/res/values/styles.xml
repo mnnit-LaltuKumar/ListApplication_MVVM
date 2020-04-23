@@ -1,0 +1,53 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+
+    <style name="main_title_style">
+        <item name="android:textSize">@dimen/text_size_21</item>
+        <item name="android:textColor">@color/title_color</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
+    </style>
+
+    <style name="text_author_shimmer_style">
+        <item name="android:textSize">@dimen/text_size_8</item>
+        <item name="android:textColor">@color/repo_text_color</item>
+        <item name="android:fontFamily">@font/roboto</item>
+    </style>
+
+    <style name="text_author_style" parent="@style/text_author_shimmer_style">
+        <item name="android:textSize">@dimen/text_size_15</item>
+    </style>
+
+    <style name="text_title_style">
+        <item name="android:textSize">@dimen/text_size_18</item>
+        <item name="android:textColor">@color/color_dark_blue</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
+    </style>
+
+    <style name="text_error_title_style">
+        <item name="android:textSize">@dimen/text_size_18</item>
+        <item name="android:textColor">@color/error_text_title_color</item>
+        <item name="android:fontFamily">@font/roboto_bold</item>
+    </style>
+
+    <style name="text_error_desc_style">
+        <item name="android:textSize">@dimen/text_size_15</item>
+        <item name="android:textColor">@color/error_text_desc_color</item>
+        <item name="android:fontFamily">@font/roboto</item>
+    </style>
+
+    <style name="button_error_style">
+        <item name="android:textSize">@dimen/text_size_15</item>
+        <item name="android:textColor">@color/error_button_text_color</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:background">@drawable/retry_button_selector</item>
+    </style>
+
+</resources>

@@ -1,0 +1,130 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
+
+apply plugin: 'org.jetbrains.dokka-android'
+
+android {
+    kotlinOptions {
+        jvmTarget = '1.8'
+        freeCompilerArgs = ['-Xjvm-default=compatibility']
+    }
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.listapplication"
+        minSdkVersion 19
+        targetSdkVersion 28
+        versionCode generateVersionCode()
+        versionName generateVersionName()
+        multiDexEnabled true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    dataBinding {
+        enabled = true
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    buildTypes {
+        release {
+            buildConfigField "String", "SERVER_BASE_URL", "\"https://github-trending-api.now.sh/\""
+            minifyEnabled true
+            debuggable false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+        }
+        qa.initWith(buildTypes.release)
+        qa {
+            buildConfigField "String", "SERVER_BASE_URL", "\"https://github-trending-api.now.sh/\""
+            debuggable true
+            minifyEnabled false
+            testCoverageEnabled true
+            useProguard false
+            versionNameSuffix "_QA"
+        }
+        dev.initWith(buildTypes.qa)
+        dev {
+            buildConfigField "String", "SERVER_BASE_URL", "\"https://github-trending-api.now.sh/\""
+            versionNameSuffix "_DEV"
+        }
+        debug.initWith(buildTypes.qa)
+        debug {
+            signingConfig signingConfigs.debug
+            versionNameSuffix "_DEBUG"
+        }
+    }
+    dokka {
+        outputFormat = 'html'
+        outputDirectory = "$buildDir/doc"
+        includeNonPublic = false
+    }
+    packagingOptions {
+        exclude 'META-INF/build_release.kotlin_module'
+        exclude 'META-INF/rxkotlin.properties'
+        exclude 'META-INF/rxjava.properties'
+        exclude 'META-INF/ASL2.0'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/NOTICE.txt'
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    //Android Arch
+    implementation androidSupport.support
+    implementation androidSupport.constraint
+    implementation androidSupport.material
+    implementation androidSupport.kotlin
+    implementation androidSupport.multidex
+    implementation androidSupport.lifeCycler
+    kapt androidSupport.lifeCyclerAnno
+
+
+    //Rx
+    implementation rxDependencies.rxAndroid
+
+    //Network
+    implementation networkDependencies.retrofit
+    implementation networkDependencies.retrofit_gson
+    implementation networkDependencies.retrofit_rx
+    implementation networkDependencies.retrofit_mock
+    implementation networkDependencies.okhttp_logging
+
+    //DB
+    implementation databaseDependencies.room
+    implementation databaseDependencies.rxRoom
+    kapt databaseDependencies.roomAnno
+    androidTestImplementation databaseDependencies.roomTest
+
+    //DI
+    implementation dependencyInjection.koin
+    implementation dependencyInjection.koin_vm
+
+    //Shimmer
+    implementation shimmerDependency.shimmer
+
+    //ThirdParty Dependencies
+    implementation thirdPartyDependency.circularImageView
+    implementation thirdPartyDependency.glide
+    kapt thirdPartyDependency.glideCompiler
+
+    //Test
+    testImplementation testDependency.junit
+    androidTestImplementation testDependency.testRule
+    androidTestImplementation testDependency.runner
+    androidTestImplementation testDependency.espresso
+    androidTestImplementation testDependency.espressoContrib
+    testImplementation testDependency.robolectric
+    testImplementation(testDependency.mockitoCore) { exclude group: 'org.hamcrest' }
+    testImplementation(testDependency.mockitoInline) { exclude group: 'org.hamcrest' }
+    testImplementation testDependency.mockitoJUnit
+    testImplementation testDependency.mockitoKotlin
+}
+check.dependsOn ktlint

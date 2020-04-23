@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">ListApplication</string>
+
+    <string name="app_title">ListData</string>
+
+    <!-- Error Screen -->
+    <string name="error_title">Something went wrong..</string>
+    <string name="error_desc">An alien is probably blocking your signal.</string>
+    <string name="error_button_text">Retry</string>
+</resources>

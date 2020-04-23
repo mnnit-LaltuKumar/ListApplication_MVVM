@@ -1,0 +1,112 @@
+ext {
+
+    minSdk = 19
+    targetSdk = 28
+
+    //Versioning
+    versionMajor = 1
+    versionMinor = 0
+    versionPatch = 0
+    versionClassifier = null
+    isSnapshot = true
+
+    androidX = '1.0.0'
+    multiDexVersion = '2.0.1'
+    constaint_layout = '1.1.3'
+    rx_android = '2.1.1'
+    retrofit_version = '2.4.0'
+    retrofit_adapter = '2.3.0'
+    okhttp_version = '3.10.0'
+    koin_version = '1.0.0'
+    junit = '4.12'
+    runner = '1.0.2'
+    espresso = '3.1.0'
+    shimmer = '0.1.0@aar'
+    roomVersion = '2.2.0-rc01'
+    lifecycleVersion = '2.1.0'
+    circularImageView = '3.0.1'
+    glide = '4.9.0'
+    robolectric = '3.6.1'
+    robolectricShadow = '3.0'
+    mockitoCore = '2.13.0'
+    mockitoJUnit = '2.18.0'
+    mockitoKotlin = '1.5.0'
+    testRule = '1.0.2'
+
+    databaseDependencies = [
+            room : "androidx.room:room-runtime:$roomVersion",
+            roomAnno : "androidx.room:room-compiler:$roomVersion",
+            rxRoom : "androidx.room:room-rxjava2:$roomVersion",
+            roomTest : "androidx.room:room-testing:$roomVersion"
+    ]
+
+    androidSupport = [
+            support : "androidx.appcompat:appcompat:$androidX",
+            constraint : "androidx.constraintlayout:constraintlayout:$constaint_layout",
+            material : "com.google.android.material:material:$androidX",
+            kotlin : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version",
+            multidex : "androidx.multidex:multidex:$multiDexVersion",
+            lifeCycler : "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion",
+            lifeCyclerAnno : "androidx.lifecycle:lifecycle-compiler:$lifecycleVersion"
+    ]
+
+    rxDependencies = [
+            rxAndroid : "io.reactivex.rxjava2:rxandroid:$rx_android"
+    ]
+
+    networkDependencies = [
+            retrofit : "com.squareup.retrofit2:retrofit:$retrofit_version",
+            retrofit_gson : "com.squareup.retrofit2:converter-gson:$retrofit_version",
+            retrofit_rx : "com.squareup.retrofit2:adapter-rxjava2:$retrofit_adapter",
+            retrofit_mock : "com.squareup.retrofit2:retrofit-mock:$retrofit_adapter",
+            okhttp_logging : "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
+    ]
+
+    dependencyInjection = [
+            koin : "org.koin:koin-android:$koin_version",
+            koin_vm : "org.koin:koin-androidx-viewmodel:$koin_version"
+    ]
+
+    shimmerDependency = [
+            shimmer : "com.facebook.shimmer:shimmer:$shimmer"
+    ]
+
+    thirdPartyDependency = [
+            circularImageView : "de.hdodenhof:circleimageview:$circularImageView",
+            glide : "com.github.bumptech.glide:glide:$glide",
+            glideCompiler : "com.github.bumptech.glide:compiler:$glide"
+    ]
+
+    testDependency = [
+            junit : "junit:junit:$junit",
+            testRule : "com.android.support.test:rules:$testRule",
+            runner : "com.android.support.test:runner:$runner",
+            espresso : "androidx.test.espresso:espresso-core:$espresso",
+            espressoContrib : "androidx.test.espresso:espresso-contrib:$espresso",
+
+            robolectric : "org.robolectric:robolectric:$robolectric",
+            robolectricShadow : "org.robolectric:shadows-support-v4:$robolectricShadow",
+
+            mockitoCore : "org.mockito:mockito-core:$mockitoCore",
+            mockitoInline : "org.mockito:mockito-inline:$mockitoCore",
+            mockitoJUnit : "org.mockito:mockito-junit-jupiter:$mockitoJUnit",
+            mockitoKotlin : "com.nhaarman:mockito-kotlin:$mockitoKotlin"
+    ]
+
+    generateVersionCode = {
+        return minSdk * 10000000 + versionMajor * 10000 + versionMinor * 100 + versionPatch
+    }
+
+    generateVersionName = {
+        String versionName = "${versionMajor}.${versionMinor}.${versionPatch}"
+        if (versionClassifier == null && isSnapshot) {
+            versionClassifier = "SNAPSHOT"
+        }
+
+        if (versionClassifier != null) {
+            versionName += "-" + versionClassifier
+        }
+        return versionName
+    }
+
+}

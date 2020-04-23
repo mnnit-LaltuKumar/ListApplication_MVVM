@@ -7,7 +7,7 @@ import io.reactivex.Flowable
  * Generic datasource interface which follows repository pattern for connecting db and network.
  * It performs common operations and bind db and network data together.
  */
-interface DataSource<T: Any> {
+interface DataSource<T : Any> {
 
     fun getData(data: T): Flowable<T>
 
@@ -23,7 +23,7 @@ interface DataSource<T: Any> {
         return Query(this)
     }
 
-    class Query<T: Any>(private val dataSource: DataSource<T>) {
+    class Query<T : Any>(private val dataSource: DataSource<T>) {
 
         val params: MutableMap<String, String> = mutableMapOf()
 
@@ -44,5 +44,4 @@ interface DataSource<T: Any> {
             return dataSource.getAll(this)
         }
     }
-
 }

@@ -10,6 +10,6 @@ import com.listapplication.utils.ConstantUtil.Companion.DB_VERSION
  * Abstract database class to create SQLite DB.
  */
 @Database(entities = [Repository::class], version = DB_VERSION)
-abstract class AppDatabase: RoomDatabase() {
+abstract class AppDatabase : RoomDatabase() {
     abstract fun repoDao(): RepoDao
 }

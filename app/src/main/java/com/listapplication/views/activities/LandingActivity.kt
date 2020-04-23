@@ -36,7 +36,7 @@ class LandingActivity : BaseActivity<ActivityLandingBinding, LandingViewModel>()
     override fun init(savedInstanceState: Bundle?) {
         mCustomLogs("Activity init triggered")
         mViewModel.setContract(this)
-        if(savedInstanceState == null) {
+        if (savedInstanceState == null) {
             mViewModel.getShimmerLoading().set(true)
             mViewModel.fetchTrendingRepositories(false)
         }
@@ -47,14 +47,14 @@ class LandingActivity : BaseActivity<ActivityLandingBinding, LandingViewModel>()
     }
 
     override fun launchRepoScreen() {
-        if(supportFragmentManager.findFragmentByTag(FragmentUtil.getFragmentTag(
+        if (supportFragmentManager.findFragmentByTag(FragmentUtil.getFragmentTag(
                 FRAGMENT_REPOSITORY_SCREEN)) == null) {
             setFragment(null, FRAGMENT_REPOSITORY_SCREEN, FRAG_REPLACE)
         }
     }
 
     override fun launchErrorScreen() {
-        if(supportFragmentManager.findFragmentByTag(FragmentUtil.getFragmentTag(
+        if (supportFragmentManager.findFragmentByTag(FragmentUtil.getFragmentTag(
                 FRAGMENT_ERROR_SCREEN)) == null) {
             setFragment(null, FRAGMENT_ERROR_SCREEN, FRAG_REPLACE)
         }

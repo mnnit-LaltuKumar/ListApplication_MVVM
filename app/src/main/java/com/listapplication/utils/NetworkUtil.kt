@@ -11,5 +11,4 @@ object NetworkUtil {
         val activeNetworkInfo = connectivityManager!!.activeNetworkInfo
         return activeNetworkInfo != null && activeNetworkInfo.isConnected
     }
-
 }

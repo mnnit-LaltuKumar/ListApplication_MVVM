@@ -7,7 +7,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.listapplication.R
 
-class DividerItemDecoration(context: Context): RecyclerView.ItemDecoration() {
+class DividerItemDecoration(context: Context) : RecyclerView.ItemDecoration() {
 
     private val mDivider: Drawable? = ContextCompat.getDrawable(context, R.drawable.recyclerview_line_divider)
 

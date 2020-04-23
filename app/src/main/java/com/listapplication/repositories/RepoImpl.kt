@@ -13,18 +13,18 @@ import io.reactivex.schedulers.Schedulers
  * Here we bind db and network data together and share the result across.
  * Uses koin module to generate singleton reference of T type class.
  */
-class RepoImpl<T: Any>(
+class RepoImpl<T : Any>(
     private val mContext: Context,
     private val mRestApi: DataSource<T>,
     private val mDB: DataSource<T>,
     private val mCustomLogs: CustomLogs
-): DataSource<T> {
+) : DataSource<T> {
 
     override fun getAll(): Flowable<List<T>> {
         return Flowable.concatArrayEager(
             mDB.getAll().subscribeOn(Schedulers.io()),
             Flowable.defer {
-                if (NetworkUtil.isNetworkAvailable(mContext)){
+                if (NetworkUtil.isNetworkAvailable(mContext)) {
                     mRestApi.getAll()
                         .subscribeOn(Schedulers.io())
                         .flatMap { list ->
@@ -38,18 +38,18 @@ class RepoImpl<T: Any>(
     }
 
     override fun getAll(query: DataSource.Query<T>): Flowable<List<T>> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        TODO("not implemented") // To change body of created functions use File | Settings | File Templates.
     }
 
     override fun getData(data: T): Flowable<T> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        TODO("not implemented") // To change body of created functions use File | Settings | File Templates.
     }
 
     override fun saveAll(list: List<T>): Flowable<List<T>> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        TODO("not implemented") // To change body of created functions use File | Settings | File Templates.
     }
 
     override fun deleteAll(): Completable {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        TODO("not implemented") // To change body of created functions use File | Settings | File Templates.
     }
 }

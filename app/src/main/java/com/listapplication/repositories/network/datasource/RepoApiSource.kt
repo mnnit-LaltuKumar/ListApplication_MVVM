@@ -3,7 +3,6 @@ package com.listapplication.repositories.network.datasource
 import com.listapplication.CustomLogs
 import com.listapplication.repositories.generics.DataSource
 import com.listapplication.repositories.models.Repository
-import com.listapplication.repositories.models.RepositoryParent
 import com.listapplication.repositories.network.NetworkInterface
 import com.listapplication.utils.PreferencesUtil
 import io.reactivex.Completable
@@ -18,7 +17,7 @@ class RepoApiSource(
     private val mRestAPI: NetworkInterface,
     private val mPreferencesUtil: PreferencesUtil,
     private val mCustomLogs: CustomLogs
-): DataSource<Repository> {
+) : DataSource<Repository> {
 
     override fun getAll(): Flowable<List<Repository>> {
         mCustomLogs("RepoApiSource :: getAll() Triggered")
@@ -29,19 +28,19 @@ class RepoApiSource(
     }
 
     override fun getAll(query: DataSource.Query<Repository>): Flowable<List<Repository>> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        TODO("not implemented") // To change body of created functions use File | Settings | File Templates.
     }
 
     override fun getData(data: Repository): Flowable<Repository> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        TODO("not implemented") // To change body of created functions use File | Settings | File Templates.
     }
 
     override fun saveAll(list: List<Repository>): Flowable<List<Repository>> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        TODO("not implemented") // To change body of created functions use File | Settings | File Templates.
     }
 
     override fun deleteAll(): Completable {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        TODO("not implemented") // To change body of created functions use File | Settings | File Templates.
     }
 
     private fun calculateResponseTimoutAndSave() {
@@ -50,5 +49,4 @@ class RepoApiSource(
         mCustomLogs("RepoAPISource :: Saving response timeout ${calendar.time}")
         mPreferencesUtil.saveResponseTimeout(calendar.timeInMillis)
     }
-
 }

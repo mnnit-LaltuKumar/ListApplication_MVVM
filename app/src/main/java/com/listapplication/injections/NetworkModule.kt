@@ -32,7 +32,7 @@ fun provideRetrofit(client: OkHttpClient): NetworkInterface = Retrofit.Builder()
     .build()
     .create(NetworkInterface::class.java)
 
-fun provideHttpLoggingInterceptor() : HttpLoggingInterceptor {
+fun provideHttpLoggingInterceptor(): HttpLoggingInterceptor {
     val httpLoggingInterceptor = HttpLoggingInterceptor()
     httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
     return httpLoggingInterceptor

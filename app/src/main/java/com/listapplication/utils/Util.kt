@@ -54,7 +54,7 @@ object BindingAdapter {
     @JvmStatic
     @BindingAdapter("changeState")
     fun changeShimmerState(shimmerFrameLayout: ShimmerFrameLayout, state: Boolean) {
-        if(state) {
+        if (state) {
             shimmerFrameLayout.visibility = View.VISIBLE
             shimmerFrameLayout.startShimmerAnimation()
         } else {

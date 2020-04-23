@@ -8,7 +8,7 @@ import java.lang.ref.WeakReference
  * BaseViewModel class responsible to perform common functionality of the view model classes.
  * It process the contract as weak reference and perform cleanup of data when a view model destroys.
  */
-abstract class BaseViewModel<N>: ViewModel() {
+abstract class BaseViewModel<N> : ViewModel() {
 
     private lateinit var mContract: WeakReference<N>
     protected val mCompositeDisposable = CompositeDisposable()

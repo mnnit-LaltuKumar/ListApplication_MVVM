@@ -16,7 +16,7 @@ import io.reactivex.Flowable
 class RepoDataSource(
     private val mRepoDao: RepoDao,
     private val mCustomLogs: CustomLogs
-): DataSource<Repository> {
+) : DataSource<Repository> {
 
     override fun getAll(): Flowable<List<Repository>> {
         mCustomLogs("Getting repositories from db")
@@ -29,7 +29,7 @@ class RepoDataSource(
     }
 
     override fun getData(data: Repository): Flowable<Repository> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        TODO("not implemented") // To change body of created functions use File | Settings | File Templates.
     }
 
     override fun saveAll(list: List<Repository>): Flowable<List<Repository>> {
@@ -45,5 +45,4 @@ class RepoDataSource(
             mRepoDao.deleteAllRepos()
         }
     }
-
 }

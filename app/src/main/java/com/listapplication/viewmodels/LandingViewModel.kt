@@ -28,7 +28,7 @@ class LandingViewModel(
     private val mDBSource: DataSource<Repository>,
     private val mPreferencesUtil: PreferencesUtil,
     private val mCustomLogs: CustomLogs
-): BaseViewModel<LandingNavigator>() {
+) : BaseViewModel<LandingNavigator>() {
 
     private val mRepoListLiveData: MutableLiveData<List<Repository>> = MutableLiveData()
 
@@ -44,7 +44,6 @@ class LandingViewModel(
         permissions: Array<out String>,
         grantResults: IntArray
     ) {
-
     }
 
     /**
@@ -55,7 +54,7 @@ class LandingViewModel(
      * Update the view via contract.
      */
     internal fun fetchTrendingRepositories(isForceFetch: Boolean, isPullToRefresh: Boolean = false) {
-        if(!isPullToRefresh) {
+        if (!isPullToRefresh) {
             isShimmerLoading.set(true)
         }
         mCompositeDisposable.add(
@@ -64,11 +63,11 @@ class LandingViewModel(
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
                     mCustomLogs("Success:: ${it.size}")
-                    if(it.isNotEmpty()) {
+                    if (it.isNotEmpty()) {
                         mRepoListLiveData.value = it
                         processResponse(true)
                     } else {
-                        if(!NetworkUtil.isNetworkAvailable(mContext)) {
+                        if (!NetworkUtil.isNetworkAvailable(mContext)) {
                             processResponse(false)
                         }
                     }
@@ -82,18 +81,15 @@ class LandingViewModel(
     private fun processResponse(isSuccess: Boolean) {
         isLoading.set(false)
         isShimmerLoading.set(false)
-        if(isSuccess) {
+        if (isSuccess) {
             getContract().launchRepoScreen()
         } else {
             getContract().launchErrorScreen()
         }
-
     }
 
     internal fun preConditionCheck(isForceFetch: Boolean): Flowable<List<Repository>> {
-        return if(isForceFetch
-            || mPreferencesUtil.getResponseTimeout() < Calendar.getInstance().timeInMillis
-            ) {
+        return if (isForceFetch || mPreferencesUtil.getResponseTimeout() < Calendar.getInstance().timeInMillis) {
             mCustomLogs("Start fetching data from server")
             mRepoImpl.getAll()
         } else {

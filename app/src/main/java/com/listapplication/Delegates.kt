@@ -6,4 +6,4 @@ typealias CustomLogs = (msg: String) -> Int
 
 fun customLogs(
     msg: String
-) = if(BuildConfig.DEBUG) Log.d("ListApp", msg) else 0
+) = if (BuildConfig.DEBUG) Log.d("ListApp", msg) else 0

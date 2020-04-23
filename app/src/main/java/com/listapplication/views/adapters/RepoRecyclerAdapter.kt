@@ -1,7 +1,6 @@
 package com.listapplication.views.adapters
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -19,12 +18,12 @@ import com.listapplication.repositories.models.Repository
 class RepoRecyclerAdapter(
     private var mList: List<Repository>,
     private val mCustomLogs: CustomLogs
-): RecyclerView.Adapter<RepoRecyclerAdapter.ViewHolder>(), RecyclerClickListener {
+) : RecyclerView.Adapter<RepoRecyclerAdapter.ViewHolder>(), RecyclerClickListener {
 
     private var currentExpand = -1
     private var previousExpand = -1
 
-    inner class ViewHolder(val itemBinding: LayoutRepoItemBinding): RecyclerView.ViewHolder(itemBinding.root) {
+    inner class ViewHolder(val itemBinding: LayoutRepoItemBinding) : RecyclerView.ViewHolder(itemBinding.root) {
         fun bindData(repo: Repository, pos: Int) {
             itemBinding.setVariable(BR.repository, repo)
             itemBinding.setVariable(BR.position, pos)

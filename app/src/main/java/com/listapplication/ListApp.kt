@@ -20,12 +20,12 @@ import org.koin.android.ext.android.startKoin
  * Testing Coverage
  */
 
-class ListApp: Application() {
+class ListApp : Application() {
 
     override fun onCreate() {
         MultiDex.install(this)
         super.onCreate()
-        //Start Koin
+        // Start Koin
         startKoin(applicationContext, Modules.instance(this).modules)
     }
 }

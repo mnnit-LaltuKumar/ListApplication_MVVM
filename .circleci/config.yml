@@ -1,60 +1,23 @@
-disabled_rules: # rule identifiers to exclude from running
-  - nesting
-  - function_parameter_count
-  - trailing_newline
-  - trailing_whitespace
-opt_in_rules: # some rules are only opt-in
-  - control_statement
-  - empty_count
-  - colon
-  - comma
-excluded: # paths to ignore during linting. Takes precedence over `included`.
-  - Pods
-  - "*.generated.swift"
+version: 2.1
 
-cyclomatic_complexity:
-  error: 50
+# Define the jobs we want to run for this project
+jobs:
+  build:
+    docker:
+      - image: cimg/base:2023.03
+    steps:
+      - checkout
+      - run: echo "this is the build job"
+  test:
+    docker:
+      - image: cimg/base:2023.03
+    steps:
+      - checkout
+      - run: echo "this is the test job"
 
-  # configurable rules can be customized from this configuration file
-  # binary rules can set their severity level
-force_cast: warning # implicitly. Give warning only for force casting
-
-force_try:
-  severity: warning # explicitly. Give warning only for force try
-
-type_body_length:
-  - 300 # warning
-  - 2000 # error
-
-function_body_length:
-  warning: 120
-  error: 3000
-
-  # or they can set both explicitly
-file_length:
-  warning: 500
-  error: 2000
-
-line_length:
-  warning: 250
-  error: 3000
-
-large_tuple: # warn user when using 3 values in tuple, give error if there are 4
-  - 3
-  - 4
-
-type_name:
-  min_length: 4 # only warning
-  max_length: # warning and error
-    warning: 40
-    error: 50
-  excluded: iPhone # excluded via string
-reporter: "xcode"
-
-identifier_name:
-  min_length: 2
-  max_length:
-    warning: 90
-    error: 1000
-  excluded:
-    - id
+# Orchestrate our job run sequence
+workflows:
+  build_and_test:
+    jobs:
+      - build
+      - test
